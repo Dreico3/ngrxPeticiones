@@ -31,7 +31,7 @@ export class InicioComponent implements OnInit {
   }
 
   consultar():void{
-    this.pokeService.getPagePokemon();
+    this.pokeService.getPagePokemon2();
   }
 
 }

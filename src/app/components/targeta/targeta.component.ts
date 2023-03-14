@@ -6,7 +6,7 @@ import { Pokemon } from 'src/app/interfaces/pokemon.inteface';
 import { ServicePokemonService } from 'src/app/services/service-pokemon.service';
 import { cargarPokelocal } from 'src/app/state/actions/pokeLocal.actions';
 import { AppState } from 'src/app/state/app.state';
-import { selectListItems } from 'src/app/state/selectors/items.selectors';
+import { selectListItems, selectPagina } from 'src/app/state/selectors/items.selectors';
 
 @Component({
   selector: 'app-targeta',
@@ -27,6 +27,7 @@ export class TargetaComponent {
   }
 
   siguiente(){
-    console.log('apretaste siguiente perrro')
+    console.log('apretaste siguiente perrro');
+    console.log(this.store.select(selectPagina).subscribe(e=>console.log(e)))
   }
 }

@@ -25,7 +25,7 @@ export class ItemsEffects {
     loadItems$ = createEffect(
         () => this.actions$.pipe(
             ofType('[Pokelocal List] cargando pokemons'),
-            mergeMap(() => this.pokeService.getPagePokemon()
+            mergeMap(() => this.pokeService.getPagePokemon2()
                 .pipe(
                     tap(po => console.log('esto es en el effect', po)),
                     map(po => {

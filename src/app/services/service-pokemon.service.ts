@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { delay, from, map, mergeMap, Observable, of, tap, toArray } from 'rxjs';
+import { delay, forkJoin, from, map, mergeMap, Observable, of, tap, toArray } from 'rxjs';
 import { Pagina } from '../interfaces/pagina.interface';
 import { Pokelocal } from '../interfaces/pokeLocal.interface';
 import { Pokemon } from '../interfaces/pokemon.inteface';
@@ -27,7 +27,7 @@ export class ServicePokemonService {
     )
   }
 
-  getPagePokemon():Observable<Pagina>{
+  getPagePokemon(): Observable<Pagina> {
     console.log('traer pokemones con la pagina incluida');
     return this.http.get<Pagina>(this.url).pipe(
       map(po => {
@@ -37,12 +37,49 @@ export class ServicePokemonService {
           mergeMap(ele => this.http.get<Pokemon>(ele.url)),
           toArray(),
           map(ele => po.data = ele)
-          
+
         ).subscribe()
         return po
       }),
-      tap(ele=>console.log('esto regresa el service',ele)
-    )/* .subscribe() */)
+      tap(ele => console.log('esto regresa el service', ele)
+      )/* .subscribe() */)
+  }
+
+  /* getPagePokemon2(): Observable<Pagina>  {
+    console.log('traer pokemones con la pagina incluida 2');
+    return this.http.get<Pagina>(this.url).pipe(
+      map(pagina => {
+
+        return from(pagina.results).pipe(
+          mergeMap(pokeUrl => this.http.get<Pokemon>(pokeUrl.url)),
+          toArray(),
+          map(arrayPokemon => {
+            return { ...pagina, data: arrayPokemon }
+          })
+        )
+
+      }),
+      tap(ele => console.log('esto regresa el service', ele))
+    )
+  } */
+
+  getPagePokemon2(): Observable<Pagina> {
+    console.log('traer pokemones con la pagina incluida 2');
+    return this.http.get<Pagina>(this.url).pipe(
+      mergeMap(pagina => {
+        const pokemonObsArray = pagina.results.map(poke => this.http.get<Pokemon>(poke.url));
+
+        return forkJoin(pokemonObsArray).pipe(
+
+          map(pokemonArray => {
+            return { ...pagina, data: pokemonArray };
+          })
+          
+        );
+
+      }),
+      tap(ele => console.log('esto regresa el service', ele))
+    );
   }
 
 

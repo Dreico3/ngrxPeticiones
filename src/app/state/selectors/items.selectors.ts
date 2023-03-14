@@ -14,3 +14,8 @@ export const selectCargando = createSelector(
     selectFeature,
     (state:ItemsState)=>state.loading
 )
+
+export const selectPagina = createSelector(
+    selectFeature,
+    (state:ItemsState)=>state.page
+)
