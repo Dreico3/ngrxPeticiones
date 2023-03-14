@@ -1,0 +1,6 @@
+<button (click)="consultar()">traer</button>
+
+<div>
+    <h3 *ngIf="loading$|async">cargando ...</h3>
+    <app-targeta></app-targeta>
+</div>

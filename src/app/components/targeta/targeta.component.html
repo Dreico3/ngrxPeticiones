@@ -1,0 +1,10 @@
+<p>targeta works!</p>
+<button (click)="siguiente()">siguiente...</button>
+<div class="targetas">
+    <div class="targeta" *ngFor="let po of listaPokemon$ | async">
+        <h2>{{po.name}}</h2>
+        <img src="{{po.sprites.front_shiny}}" alt="imagen del biccho">
+        <p> <i>puntos experiencia:</i> {{po.base_experience}}</p>
+    </div>
+</div>
+<button (click)="siguiente()">siguiente...</button>

@@ -1,0 +1,21 @@
+.targetas{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.targeta{
+    display: block;
+    text-align: center;
+    margin: 1rem;
+    border:1px solid #000000;
+    border-radius: 10px;
+    padding: 1em;
+    background-color: rebeccapurple;
+}
+
+.targeta:hover{
+    background-color: #7f38c7;
+}
+.targeta:active{
+    background-color: #fbbe6e;
+}
