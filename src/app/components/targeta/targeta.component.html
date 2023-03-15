@@ -1,4 +1,5 @@
 <p>targeta works!</p>
+<button (click)="regresar()">...regresar</button>
 <button (click)="siguiente()">siguiente...</button>
 <div class="targetas">
     <div class="targeta" *ngFor="let po of listaPokemon$ | async">
@@ -7,4 +8,5 @@
         <p> <i>puntos experiencia:</i> {{po.base_experience}}</p>
     </div>
 </div>
+<button (click)="regresar()">...regresar</button>
 <button (click)="siguiente()">siguiente...</button>

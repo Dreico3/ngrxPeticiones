@@ -63,9 +63,9 @@ export class ServicePokemonService {
     )
   } */
 
-  getPagePokemon2(): Observable<Pagina> {
+  getPagePokemon2(link=this.url): Observable<Pagina> {
     console.log('traer pokemones con la pagina incluida 2');
-    return this.http.get<Pagina>(this.url).pipe(
+    return this.http.get<Pagina>(link).pipe(
       mergeMap(pagina => {
         const pokemonObsArray = pagina.results.map(poke => this.http.get<Pokemon>(poke.url));
 

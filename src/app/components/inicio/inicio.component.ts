@@ -12,28 +12,28 @@ import { selectCargando } from 'src/app/state/selectors/items.selectors';
   styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent implements OnInit {
-  loading$:Observable<boolean> = EMPTY;
+  loading$: Observable<boolean> = EMPTY;
   constructor(
     private store: Store<any>,
     private pokeService: ServicePokemonService
-  ){}
-  
+  ) { }
+
   ngOnInit(): void {
     console.log('iniciando componente');
-    this.loading$=this.store.select(selectCargando)
+    this.loading$ = this.store.select(selectCargando)
     //items sera igual a las repuesta que obtenemos del sevicio
     /* this.pokeService.getDataApi().subscribe(
       res=> this.store.dispatch(cargardoPokelocal(
         {items:res}
       ))
     ) */
-      //esta linea es la inicializadora del strore y del effects
-      this.store.dispatch(cargarPokelocal())
+    //esta linea es la inicializadora del strore y del effects
+    this.store.dispatch(cargarPokelocal())
   }
-  
-  consultar():void{
-  
-  //  this.pokeService.getPagePokemon2();
+
+  consultar(): void {
+
+    //  this.pokeService.getPagePokemon2();
   }
 
 }

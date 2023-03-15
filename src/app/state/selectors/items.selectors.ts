@@ -15,8 +15,12 @@ export const selectCargando = createSelector(
     selectFeature,
     (state: Pagina) => state.loading
 )
-/*
-export const selectPagina = createSelector(
+
+export const selectNexPage = createSelector(
     selectFeature,
-    (state:ItemsState)=>state.page
-) */
+    (state:Pagina)=>state.next
+)
+export const selectPreviousPage = createSelector(
+    selectFeature,
+    (state:Pagina)=>state.previous
+)
