@@ -1,10 +1,10 @@
-import { Observable } from "rxjs";
-import { Pokelocal } from "./pokeLocal.interface";
+
 import { Pokemon } from "./pokemon.inteface";
 
 export interface Pagina {
+    loading:boolean,
     count: number;
-    next: string;
+    next: null | string;
     previous: null | string;
     results: [
         { name: string, url: string }

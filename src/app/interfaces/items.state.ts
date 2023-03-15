@@ -5,7 +5,7 @@ import { Pokemon } from "./pokemon.inteface";
 export interface ItemsState {
 
     loading: boolean,
-    items: ReadonlyArray<Pokemon>,
-    page: Readonly<Pagina>
+    items: Pokemon[],
+    page:Pagina
 
 }

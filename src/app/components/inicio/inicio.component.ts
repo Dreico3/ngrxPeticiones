@@ -12,7 +12,7 @@ import { selectCargando } from 'src/app/state/selectors/items.selectors';
   styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent implements OnInit {
-  loading$:Observable<boolean> = new Observable()
+  loading$:Observable<boolean> = EMPTY;
   constructor(
     private store: Store<any>,
     private pokeService: ServicePokemonService
@@ -27,11 +27,13 @@ export class InicioComponent implements OnInit {
         {items:res}
       ))
     ) */
-    this.store.dispatch(cargarPokelocal())
+      //esta linea es la inicializadora del strore y del effects
+      this.store.dispatch(cargarPokelocal())
   }
-
+  
   consultar():void{
-    this.pokeService.getPagePokemon2();
+  
+  //  this.pokeService.getPagePokemon2();
   }
 
 }

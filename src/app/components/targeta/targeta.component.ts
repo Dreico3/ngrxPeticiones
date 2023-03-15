@@ -6,7 +6,7 @@ import { Pokemon } from 'src/app/interfaces/pokemon.inteface';
 import { ServicePokemonService } from 'src/app/services/service-pokemon.service';
 import { cargarPokelocal } from 'src/app/state/actions/pokeLocal.actions';
 import { AppState } from 'src/app/state/app.state';
-import { selectListItems, selectPagina } from 'src/app/state/selectors/items.selectors';
+import { selectListItems } from 'src/app/state/selectors/items.selectors';
 
 @Component({
   selector: 'app-targeta',
@@ -15,7 +15,7 @@ import { selectListItems, selectPagina } from 'src/app/state/selectors/items.sel
 })
 export class TargetaComponent {
   //listaPokemon: Observable<Pokelocal[]> = EMPTY;
-  listaPokemon$: Observable<readonly Pokemon[]> = EMPTY;
+  listaPokemon$: Observable<Pokemon[]> = EMPTY;
   constructor(
    // private servicePoLocal: ServicePokemonService,
     private store: Store<AppState>
@@ -28,6 +28,6 @@ export class TargetaComponent {
 
   siguiente(){
     console.log('apretaste siguiente perrro');
-    console.log(this.store.select(selectPagina).subscribe(e=>console.log(e)))
+    //this.store.select(selectPagina).subscribe(page=>console.log(page))
   }
 }

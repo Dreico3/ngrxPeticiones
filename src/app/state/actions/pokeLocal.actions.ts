@@ -11,6 +11,7 @@ export const cargarPokelocal = createAction(
 export const cargardoPokelocal = createAction(
     '[Pokelocal List] pokemons cargado',
     //en el prop se necesita que contega un array de pokelocal
-    props<{ itemsd: Pokemon[],page:Pagina }>()
+    props<{ pagina: Pagina }>()
+    //props<{ itemsd: Pokemon[],page:Pagina }>()
     //props<{ itemsd: Pokemon[] }>()
 )

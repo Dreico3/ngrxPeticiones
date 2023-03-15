@@ -29,7 +29,7 @@ export class ItemsEffects {
                 .pipe(
                     tap(po => console.log('esto es en el effect', po)),
                     map(po => {
-                        return cargardoPokelocal({ itemsd: po.data, page: po })
+                        return cargardoPokelocal({ pagina:po })
                     }),
                     catchError(() => {
                         console.log('error');
