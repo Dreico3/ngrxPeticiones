@@ -4,10 +4,10 @@ import { Pagina } from "src/app/interfaces/pagina.interface";
 import { Pokelocal } from "src/app/interfaces/pokeLocal.interface";
 import { cargardoPokelocal, cargarPokelocal } from "../actions/pokeLocal.actions";
 
-export const inicialState: ItemsState = { 
-    loading: false, 
-    items: [], 
-    page: {} as Pagina 
+export const inicialState: ItemsState = {
+    loading: false,
+    items: [],
+    page: {} as Pagina
 }
 
 export const PokeReducer = createReducer(
@@ -21,10 +21,11 @@ export const PokeReducer = createReducer(
     //siempre resibe el estado y el segundo parametro son las propiedades que
     //resibe 
     on(cargardoPokelocal, (state, props) => {
-        console.log('-----reducer------',props)
-        console.log('-----estado------',state)
-        return { ...state, loading: false, items: props.itemsd}//como el padre es igual al valor podria quedar asi{...state, items}
+        console.log('-----reducer------', props)
+        console.log('-----estado------', state)
+        return { ...state, loading: false, items: props.itemsd, page: props.page }//como el padre es igual al valor podria quedar asi{...state, items}
         //pero lo hacemos haci para que sea mas entendible
+        //Nota:intereante solo me faltaba esto joers
     })
 
 )
